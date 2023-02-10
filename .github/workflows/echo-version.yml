@@ -3,6 +3,10 @@
 
 name: ssssss
 
+on:
+  push:
+    branches: [ "does-not-exist" ]
+
 jobs:
   lint:
     name: dddddd
