@@ -13,12 +13,18 @@ jobs:
     runs-on: ubuntu-latest
   
     steps:
+      - uses: actions/checkout@v3
       - name: Auto Increment Semver Action
         uses: MCKanpolat/auto-semver-action@1.0.5
         id: versioning
         with:
           releaseType: patch 
-          github_token: ${{ secrets.TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Next Release Number
         run: echo ${{ steps.versioning.outputs.version }}
+
+      - uses: rickstaa/action-create-tag@v1
+        with:
+          tag: ${{ steps.versioning.outputs.version }}
+          message: "Automatically bumped version to ${{ steps.versioning.outputs.version }}"
