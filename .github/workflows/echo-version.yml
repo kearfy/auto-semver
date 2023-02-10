@@ -19,6 +19,6 @@ jobs:
   
     steps:
       - uses: actions/checkout@v3
-      - run: git checkout ${{ env.commit }}
+      - run: git checkout ${{ inputs.commit }}
       - name: Echo
         run: cat version.txt
