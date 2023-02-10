@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Auto Increment Semver Action
-        uses: MCKanpolat/auto-semver-action@1.0.5
+        uses: MCKanpolat/auto-semver-action@1.0.9
         id: versioning
         with:
           releaseType: patch 
@@ -28,3 +28,10 @@ jobs:
         with:
           tag: ${{ steps.versioning.outputs.version }}
           message: "Automatically bumped version to ${{ steps.versioning.outputs.version }}"
+
+      - name: Store version
+        run: echo ${{ steps.versioning.outputs.version }} > version.txt
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Bump version patch to ${{ steps.versioning.outputs.version }}""
