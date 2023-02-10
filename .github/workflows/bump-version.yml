@@ -7,10 +7,16 @@ on:
   push:
     branches: [ "main" ]
 
+env:
+  commit: ""
+
 jobs:
   lint:
     name: Lint and test
     runs-on: ubuntu-latest
+
+    output:
+      commit: ${{ steps.commit.outputs.commit_hash }}
   
     steps:
       - uses: actions/checkout@v3
@@ -30,6 +36,7 @@ jobs:
           message: "Automatically bumped version to ${{ steps.versioning.outputs.version }}"
 
       - name: Store version
+        id: commit
         run: echo ${{ steps.versioning.outputs.version }} > version.txt
 
       - uses: stefanzweifel/git-auto-commit-action@v4
@@ -37,5 +44,7 @@ jobs:
           commit_message: "Bump version patch to ${{ steps.versioning.outputs.version }}"
   echoit:
     uses: ./.github/workflows/echo-version.yml
+    with:
+      commit: ${{ needs.lint.outputs.commit }}
     secrets: inherit
     needs: lint

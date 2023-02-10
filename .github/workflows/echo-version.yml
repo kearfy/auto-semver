@@ -5,6 +5,9 @@ name: ssssss
 
 on:
   workflow_call:
+    inputs:
+      environment:
+        commit: 'HEAD'
 
 jobs:
   lint:
@@ -13,5 +16,6 @@ jobs:
   
     steps:
       - uses: actions/checkout@v3
+      - run: git checkout ${{ env.commit }}
       - name: Echo
         run: cat version.txt
