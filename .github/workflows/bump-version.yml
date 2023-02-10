@@ -4,7 +4,7 @@
 name: Auto bump version number
 
 on:
-  pull_request:
+  push:
     branches: [ "main" ]
 
 jobs:
