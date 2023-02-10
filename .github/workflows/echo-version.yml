@@ -5,7 +5,7 @@ name: ssssss
 
 on:
   push:
-    branches: [ "does-not-exist" ]
+    branches: [ "main" ]
 
 jobs:
   lint:
