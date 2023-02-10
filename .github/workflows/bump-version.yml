@@ -34,4 +34,4 @@ jobs:
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "Bump version patch to ${{ steps.versioning.outputs.version }}""
+          commit_message: "Bump version patch to ${{ steps.versioning.outputs.version }}"
