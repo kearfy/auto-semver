@@ -7,9 +7,6 @@ on:
   push:
     branches: [ "main" ]
 
-env:
-  commit: ""
-
 jobs:
   lint:
     name: Lint and test
