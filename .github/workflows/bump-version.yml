@@ -18,8 +18,7 @@ jobs:
         id: versioning
         with:
           releaseType: patch 
-          incrementPerCommit: true
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.TOKEN }}
 
       - name: Next Release Number
         run: echo ${{ steps.versioning.outputs.version }}
