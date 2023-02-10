@@ -19,7 +19,7 @@ jobs:
         id: versioning
         with:
           releaseType: patch 
-          github_token: ${{ secrets.TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Next Release Number
         run: echo ${{ steps.versioning.outputs.version }}
@@ -28,3 +28,4 @@ jobs:
         with:
           tag: ${{ steps.versioning.outputs.version }}
           message: "Automatically bumped version to ${{ steps.versioning.outputs.version }}"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
