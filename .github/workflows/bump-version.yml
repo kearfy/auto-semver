@@ -1,0 +1,25 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Auto bump version number
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  lint:
+    name: Lint and test
+    runs-on: ubuntu-latest
+  
+    steps:
+      - name: Auto Increment Semver Action
+        uses: MCKanpolat/auto-semver-action@1.0.5
+        id: versioning
+        with:
+          releaseType: patch 
+          incrementPerCommit: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Next Release Number
+        run: echo ${{ steps.versioning.outputs.version }}
