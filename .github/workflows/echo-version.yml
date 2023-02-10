@@ -6,8 +6,11 @@ name: ssssss
 on:
   workflow_call:
     inputs:
-      environment:
-        commit: 'HEAD'
+      commit:
+        description: 'Which commit to check out'
+        required: true
+        default: 'HEAD'
+        type: string
 
 jobs:
   lint:
