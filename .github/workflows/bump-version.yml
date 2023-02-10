@@ -33,10 +33,10 @@ jobs:
           message: "Automatically bumped version to ${{ steps.versioning.outputs.version }}"
 
       - name: Store version
-        id: commit
         run: echo ${{ steps.versioning.outputs.version }} > version.txt
 
       - uses: stefanzweifel/git-auto-commit-action@v4
+        id: commit
         with:
           commit_message: "Bump version patch to ${{ steps.versioning.outputs.version }}"
   echoit:
