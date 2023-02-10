@@ -9,5 +9,6 @@ jobs:
     runs-on: ubuntu-latest
   
     steps:
+      - uses: actions/checkout@v3
       - name: Echo
         run: cat version.txt
