@@ -15,7 +15,7 @@ jobs:
     name: Lint and test
     runs-on: ubuntu-latest
 
-    output:
+    outputs:
       commit: ${{ steps.commit.outputs.commit_hash }}
   
     steps:
